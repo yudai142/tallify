@@ -1,0 +1,23 @@
+{
+  "name": "tallify",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
+    "dev": "concurrently \"yarn build --watch\" \"yarn build:css --watch\""
+  },
+  "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "@hotwired/turbo-rails": "latest"
+  },
+  "devDependencies": {
+    "@hotwired/stimulus": "latest",
+    "autoprefixer": "latest",
+    "concurrently": "latest",
+    "daisyui": "^4",
+    "esbuild": "latest",
+    "postcss": "latest",
+    "tailwindcss": "^3"
+  }
+}

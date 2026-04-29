@@ -1,0 +1,9 @@
+.git
+log/
+tmp/
+node_modules/
+app/assets/builds/
+.env
+*.md
+spec/
+test/

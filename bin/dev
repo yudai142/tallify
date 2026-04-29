@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+require "fileutils"
+require "shellwords"
+
+# Add current directory to the load path
+$LOAD_PATH.unshift(File.expand_path(".", __dir__))
+
+# Ensure .foreman exists
+Dir.chdir(File.expand_path(".", __dir__))
+
+# Use Foreman to manage multiple processes
+system "foreman start -f Procfile.dev"

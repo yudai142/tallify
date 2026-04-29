@@ -1,0 +1,5 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* daisyUIカスタムテーマ上書き（必要に応じて追加） */

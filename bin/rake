@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require_relative '../config/boot'
+require 'bundler/setup'
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:spec)
+
+task default: :spec
