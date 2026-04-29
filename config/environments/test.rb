@@ -1,7 +1,18 @@
 require_relative 'application'
 
+Rails.application.configure do
+  config.cache_classes = true
+  config.eager_load = false
+  config.public_file_server.enabled = true
+  config.public_file_server.headers = { 'Cache-Control' => "public, max-age=#{1.hour.to_i}" }
+  config.consider_all_requests_local = true
+  config.action_controller.perform_caching = false
+  config.action_dispatch.show_exceptions = false
+  config.action_controller.allow_forgery_protection = false
+  config.active_storage.service = :test
+  config.mail_to = 'test@example.com'
+  config.action_mailer.perform_caching = false
+  config.action_mailer.delivery_method = :test
+end
+
 Rails.application.initialize!
-
-Rails.env = 'test' unless defined?(Rails.env)
-
-ENV['RAILS_ENV'] = 'test'
