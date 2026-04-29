@@ -9,26 +9,11 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/puma.pid" }
 
-# Logging
-if ENV['RAILS_LOG_TO_STDOUT'].present?
+# Logging - only configure if RAILS_LOG_TO_STDOUT is set
+if ENV['RAILS_LOG_TO_STDOUT']
   stdout_redirect 'log/puma.stdout.log', 'log/puma.stderr.log', true
 end
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
 
-# Set up proper logging before Rails is initialized
-unless defined?(Rails.logger) && Rails.logger && Rails.logger.formatter
-  begin
-    require 'active_support/logger'
-    if ENV['RAILS_LOG_TO_STDOUT'].present?
-      logger = ActiveSupport::Logger.new($stdout)
-    else
-      logger = ActiveSupport::Logger.new('log/puma.log')
-    end
-    logger.formatter = ::Logger::Formatter.new
-    Object.const_set('PUMA_LOGGER', logger)
-  rescue => e
-    warn "Failed to initialize logger: #{e.message}"
-  end
-end

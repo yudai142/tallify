@@ -13,7 +13,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   # Logger configuration
-  if ENV['RAILS_LOG_TO_STDOUT'].present?
+  if ENV['RAILS_LOG_TO_STDOUT']
     logger = ActiveSupport::Logger.new($stdout)
     logger.formatter = ::Logger::Formatter.new
     config.logger = logger

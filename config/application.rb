@@ -11,7 +11,7 @@ module Tallify
     config.api_only = false
     
     # Configure logger early to prevent nil errors
-    if ENV['RAILS_LOG_TO_STDOUT'].present?
+    if ENV['RAILS_LOG_TO_STDOUT']
       config.logger = ActiveSupport::Logger.new($stdout)
     else
       config.logger = ActiveSupport::Logger.new(File.join(Rails.root, 'log', "#{Rails.env}.log"))
