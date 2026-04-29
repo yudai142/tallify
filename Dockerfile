@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
   git \
   curl \
   imagemagick \
+  libyaml-dev \
   && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js 20.x via NodeSource
