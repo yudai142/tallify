@@ -10,6 +10,14 @@ module Tallify
 
     config.api_only = false
     
+    # Configure logger early to prevent nil errors
+    if ENV['RAILS_LOG_TO_STDOUT'].present?
+      config.logger = ActiveSupport::Logger.new($stdout)
+    else
+      config.logger = ActiveSupport::Logger.new(File.join(Rails.root, 'log', "#{Rails.env}.log"))
+    end
+    config.logger.formatter = ::Logger::Formatter.new
+    
     config.generators do |g|
       g.orm :active_record
       g.test_framework :rspec, fixture: true

@@ -21,7 +21,7 @@ services:
         bundle exec rails db:prepare &&
         yarn build --watch &
         yarn build:css --watch &
-        bundle exec rails s -b 0.0.0.0
+        RAILS_LOG_TO_STDOUT=true bundle exec rails s -b 0.0.0.0
       "
     volumes:
       - .:/app
@@ -34,6 +34,8 @@ services:
         condition: service_healthy
     env_file:
       - .env
+    environment:
+      - RAILS_LOG_TO_STDOUT=true
     stdin_open: true
     tty: true
 
