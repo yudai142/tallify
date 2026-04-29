@@ -11,4 +11,11 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.i18n.fallbacks = [I18n.default_locale]
   config.active_record.dump_schema_after_migration = false
+  
+  # Logger configuration
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
+    logger = ActiveSupport::Logger.new($stdout)
+    logger.formatter = ::Logger::Formatter.new
+    config.logger = logger
+  end
 end

@@ -12,4 +12,9 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.hosts.clear
+  
+  # Logger configuration
+  config.logger = ActiveSupport::Logger.new($stdout)
+  config.logger.formatter = ::Logger::Formatter.new
+  config.log_tags = :request_id
 end
