@@ -1,5 +1,3 @@
-require_relative 'application'
-
 Rails.application.configure do
   config.cache_classes = false
   config.eager_load = false
@@ -15,5 +13,3 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.hosts.clear
 end
-
-Rails.application.initialize!

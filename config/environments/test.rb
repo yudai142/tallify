@@ -1,5 +1,3 @@
-require_relative 'application'
-
 Rails.application.configure do
   config.cache_classes = true
   config.eager_load = false
@@ -14,5 +12,3 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :test
 end
-
-Rails.application.initialize!

@@ -1,5 +1,3 @@
-require_relative 'application'
-
 Rails.application.configure do
   config.cache_classes = true
   config.eager_load = true
@@ -14,5 +12,3 @@ Rails.application.configure do
   config.i18n.fallbacks = [I18n.default_locale]
   config.active_record.dump_schema_after_migration = false
 end
-
-Rails.application.initialize!
