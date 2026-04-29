@@ -21,7 +21,7 @@ services:
         bundle exec rails db:prepare &&
         yarn build --watch &
         yarn build:css --watch &
-        RAILS_LOG_TO_STDOUT=true bundle exec rails s -b 0.0.0.0
+        exec bundle exec puma -b tcp://0.0.0.0:3000 -e development
       "
     volumes:
       - .:/app

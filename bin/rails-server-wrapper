@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Rails server startup wrapper
+
+export RAILS_ENV=${RAILS_ENV:-development}
+export RAILS_LOG_TO_STDOUT=true
+export BUNDLE_GEMFILE=/app/Gemfile
+
+cd /app
+
+# Ensure logger is set up before starting server
+ruby -e "
+  require_relative 'config/boot'
+  require 'rails'
+  require 'rails/commands'
+  require 'logger'
+  
+  # Ensure we have a logger set up
+  if !defined?(Rails.logger) || Rails.logger.nil?
+    Rails.logger = ActiveSupport::Logger.new(\$stdout)
+  end
+  
+  if Rails.logger.formatter.nil?
+    Rails.logger.formatter = ::Logger::Formatter.new
+  end
+" 2>/dev/null
+
+# Start the server with the environment variable set
+exec bundle exec rails server -b 0.0.0.0
