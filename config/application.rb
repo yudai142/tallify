@@ -29,8 +29,5 @@ module Tallify
     # i18n
     config.i18n.default_locale = :en
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
-
-    # ActionCable adapter
-    config.action_cable.adapter = :async
   end
 end
