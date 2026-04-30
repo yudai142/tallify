@@ -15,7 +15,8 @@ services:
 
   web:
     build: .
-    command: puma -b tcp://0.0.0.0:3000
+    command: bundle exec puma -b tcp://0.0.0.0:3000 -e development
+    entrypoint: docker/entrypoint.sh
     volumes:
       - .:/app
       - bundle_cache:/usr/local/bundle
