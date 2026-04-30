@@ -40,6 +40,7 @@ end
 
 group :development do
   gem "web-console"
+  gem "listen"
 end
 
 group :test do

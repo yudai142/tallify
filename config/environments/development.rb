@@ -10,7 +10,14 @@ Rails.application.configure do
   config.active_storage.service = :local
   config.action_mailer.perform_deliveries = false
   config.action_mailer.raise_delivery_errors = false
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  
+  # Allow file watching for auto-reload if available
+  begin
+    config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  rescue StandardError
+    # Fallback if listen is not installed
+  end
+  
   config.hosts.clear
   
   # Logger configuration
