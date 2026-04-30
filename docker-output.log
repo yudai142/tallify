@@ -1,0 +1,18 @@
+ Container tallify-db-1  Running
+ Container tallify-web-1  Recreate
+ Container tallify-web-1  Recreated
+Attaching to db-1, web-1
+web-1  | [31mCould not find gem 'listen' in locally installed gems.
+web-1  | [0m[33mRun `bundle install` to install missing gems.[0m
+web-1  | [31mCould not find gem 'listen' in locally installed gems.
+web-1  | [0m[33mRun `bundle install` to install missing gems.[0m
+[Kweb-1 exited with code 7
+db-1   | 2026-04-30 06:06:31.553 UTC [27] LOG:  checkpoint starting: time
+db-1   | 2026-04-30 06:06:31.619 UTC [27] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.038 s, sync=0.002 s, total=0.067 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/195FD70, redo lsn=0/195FD38
+db-1   | 2026-04-30 06:06:58.135 UTC [1] LOG:  received fast shutdown request
+db-1   | 2026-04-30 06:06:58.139 UTC [1] LOG:  aborting any active transactions
+db-1   | 2026-04-30 06:06:58.177 UTC [1] LOG:  background worker "logical replication launcher" (PID 32) exited with exit code 1
+db-1   | 2026-04-30 06:06:58.178 UTC [27] LOG:  shutting down
+db-1   | 2026-04-30 06:06:58.180 UTC [27] LOG:  checkpoint starting: shutdown immediate
+db-1   | 2026-04-30 06:06:58.203 UTC [27] LOG:  checkpoint complete: wrote 0 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.008 s, sync=0.001 s, total=0.026 s; sync files=0, longest=0.000 s, average=0.000 s; distance=0 kB, estimate=0 kB; lsn=0/195FE20, redo lsn=0/195FE20
+db-1   | 2026-04-30 06:06:58.223 UTC [1] LOG:  database system is shut down
