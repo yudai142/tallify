@@ -28,6 +28,9 @@ jobs:
           bundle config set frozen false
           bundle install
 
+      - name: Initialize RSpec
+        run: bundle exec rspec --init --force
+
       - name: Run RSpec
         run: bundle exec rspec spec/
 
