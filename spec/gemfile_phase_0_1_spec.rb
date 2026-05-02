@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'Gemfile Phase 0-1 Update' do
   let(:gemfile_path) { File.expand_path('../../../Gemfile', __FILE__) }
   let(:gemfile_content) { File.read(gemfile_path) }
