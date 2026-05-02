@@ -16,6 +16,10 @@
 .env.local
 .env.*.local
 
+# Bundler
+.bundle/
+vendor/bundle/
+
 # IDE / Editor
 .vscode
 .idea
@@ -33,3 +37,4 @@
 
 # MacOS
 .DS_Store
+/md/*

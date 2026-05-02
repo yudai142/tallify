@@ -13,9 +13,9 @@ gem "stimulus-rails"
 # React Rails
 gem "react-rails"
 
-# Asset bundling
-gem "jsbundling-rails"
-gem "cssbundling-rails"
+# Asset bundling - Shakapacker (esbuild)
+gem "shakapacker", "~> 8.0"
+gem "tailwindcss-rails"
 
 # Mailbox and incineration
 gem "actionmailbox", "~> 7.0.0"
@@ -29,6 +29,13 @@ gem "bootsnap", require: false
 
 # Authentication
 gem "devise"
+
+# Validation
+gem "validates_email_format_of"
+
+# Pagination & Search
+gem "kaminari"
+gem "ransack"
 
 # Excel export
 gem "caxlsx"
@@ -44,6 +51,7 @@ group :development do
 end
 
 group :test do
+  gem "rspec-rails"
   gem "capybara"
   gem "selenium-webdriver"
 end

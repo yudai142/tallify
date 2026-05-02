@@ -1,0 +1,83 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        ruby-version: ['3.3.11']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: false
+
+      - name: Update dependencies
+        run: |
+          bundle config set frozen false
+          bundle install
+
+      - name: Verify Gemfile Phase 0-1 changes
+        run: |
+          echo "Checking Gemfile requirements..."
+          
+          # Check removals
+          if grep -q 'jsbundling-rails' Gemfile; then
+            echo "✗ FAIL: jsbundling-rails should be removed"
+            exit 1
+          fi
+          echo "✓ jsbundling-rails removed"
+          
+          if grep -q 'cssbundling-rails' Gemfile; then
+            echo "✗ FAIL: cssbundling-rails should be removed"
+            exit 1
+          fi
+          echo "✓ cssbundling-rails removed"
+          
+          # Check additions
+          if ! grep -q 'shakapacker.*~> 8.0' Gemfile; then
+            echo "✗ FAIL: shakapacker ~> 8.0 not found"
+            exit 1
+          fi
+          echo "✓ shakapacker ~> 8.0 added"
+          
+          if ! grep -q 'tailwindcss-rails' Gemfile; then
+            echo "✗ FAIL: tailwindcss-rails not found"
+            exit 1
+          fi
+          echo "✓ tailwindcss-rails added"
+          
+          if ! grep -q 'validates_email_format_of' Gemfile; then
+            echo "✗ FAIL: validates_email_format_of not found"
+            exit 1
+          fi
+          echo "✓ validates_email_format_of added"
+          
+          if ! grep -q 'kaminari' Gemfile; then
+            echo "✗ FAIL: kaminari not found"
+            exit 1
+          fi
+          echo "✓ kaminari added"
+          
+          if ! grep -q 'ransack' Gemfile; then
+            echo "✗ FAIL: ransack not found"
+            exit 1
+          fi
+          echo "✓ ransack added"
+          
+          echo "All Gemfile checks passed!"
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+        if: always()
